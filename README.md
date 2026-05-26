@@ -4,6 +4,20 @@ Hover is a local-first macOS menu bar app that opens an AI prompt next to your c
 
 Hover supports LM Studio, Ollama, OpenAI, Featherless, and OpenAI-compatible endpoints. It does not require a Hover cloud account.
 
+### Screenshots
+
+<img width="890" height="734" alt="1" src="https://github.com/user-attachments/assets/bd6206d6-bae7-4a94-be5d-c3371315d4f9" />
+<img width="840" height="732" alt="2" src="https://github.com/user-attachments/assets/6d87720b-0b8e-4737-a240-f42ca0244d71" />
+<img width="836" height="714" alt="3" src="https://github.com/user-attachments/assets/cbe1a2ef-5e34-44c0-9edf-a90db20ca024" />
+<img width="835" height="741" alt="4" src="https://github.com/user-attachments/assets/ebfee94e-3f13-4588-84e2-742e44d849d9" />
+<img width="803" height="890" alt="5" src="https://github.com/user-attachments/assets/62b7c12a-c306-4eb6-9bf8-62825d02b640" />
+<img width="799" height="881" alt="6" src="https://github.com/user-attachments/assets/2ec5fe1f-6d67-4b70-974a-022525ebdac1" />
+<img width="795" height="885" alt="7" src="https://github.com/user-attachments/assets/6527c7fe-706e-48af-86a9-7628aa3db9e0" />
+<img width="799" height="875" alt="9" src="https://github.com/user-attachments/assets/4fc9f4ba-2e2d-49e4-af98-5c79e97eb44a" />
+<img width="716" height="459" alt="11" src="https://github.com/user-attachments/assets/e7295d48-6c76-4b53-bd78-77bd83424932" />
+<img width="566" height="380" alt="10" src="https://github.com/user-attachments/assets/ecd51d43-02cf-4b79-aac0-35c656f09dbf" />
+
+
 ## Why Open Source
 
 Hover sits close to a user's daily Mac workflow, so the code should be inspectable. The repository is open for transparency, review, and contributions.
