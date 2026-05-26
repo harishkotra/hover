@@ -38,6 +38,10 @@ scripts/build_dmg.sh
 
 If `NOTARYTOOL_PROFILE` is omitted, the script creates a signed but non-notarized DMG.
 
+## DMG Icon
+
+The release script embeds the app icon into the mounted `Hover` volume as `.VolumeIcon.icns`. It also applies a best-effort Finder custom icon to the local `Hover.dmg` file. The mounted volume icon is the reliable release behavior; file-level custom icons are macOS metadata and may be stripped by some upload or download paths.
+
 ## Supporter Delivery
 
 GitHub Sponsors supports one-time tiers. For a simple paid-download flow, create a one-time tier and use the welcome message to point supporters to the current DMG delivery location. If you want GitHub-controlled access, add a private download repository to the tier and publish versioned DMGs as release assets in that private repository.
