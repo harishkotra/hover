@@ -23,6 +23,7 @@ Unsigned supporter-preview DMGs can be created without Apple Developer ID, but t
 4. Submit the DMG to Apple notarization.
 5. Staple the notarization ticket.
 6. Install the final DMG on another Mac that does not have Xcode.
+7. Open the DMG and verify the mounted `Hover` volume uses the Hover icon.
 
 ## Unsigned Supporter Preview
 1. Run `ALLOW_UNSIGNED=1 scripts/build_dmg.sh`.
