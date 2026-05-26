@@ -1,0 +1,428 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A0000012C00000000000001 /* HoverApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000012B00000000000001 /* HoverApp.swift */; };
+		1A0000022C00000000000001 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000022B00000000000001 /* AppEnvironment.swift */; };
+		1A0000032C00000000000001 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000032B00000000000001 /* StatusBarController.swift */; };
+		1A0000042C00000000000001 /* GlobalTriggerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000042B00000000000001 /* GlobalTriggerManager.swift */; };
+		1A0000052C00000000000001 /* LLMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000052B00000000000001 /* LLMClient.swift */; };
+		1A0000062C00000000000001 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000062B00000000000001 /* KeychainStore.swift */; };
+		1A0000072C00000000000001 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000072B00000000000001 /* SettingsViewModel.swift */; };
+		1A0000082C00000000000001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000082B00000000000001 /* SettingsView.swift */; };
+		1A0000092C00000000000001 /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000092B00000000000001 /* FloatingPanel.swift */; };
+		1A00000A2C00000000000001 /* FloatingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00000A2B00000000000001 /* FloatingContentView.swift */; };
+		1A00000B2C00000000000001 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00000B2B00000000000001 /* VisualEffectView.swift */; };
+		1A00000C2C00000000000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A00000C2B00000000000001 /* Assets.xcassets */; };
+		1A0000232C00000000000001 /* LocalModelDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000232B00000000000001 /* LocalModelDiscovery.swift */; };
+		1A0000242C00000000000001 /* ScreenContextService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000242B00000000000001 /* ScreenContextService.swift */; };
+		1A0000252C00000000000001 /* SpeechTranscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000252B00000000000001 /* SpeechTranscriptionService.swift */; };
+		1A0000262C00000000000001 /* HoverAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000262B00000000000001 /* HoverAction.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1A0000012B00000000000001 /* HoverApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverApp.swift; sourceTree = "<group>"; };
+		1A0000022B00000000000001 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		1A0000032B00000000000001 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
+		1A0000042B00000000000001 /* GlobalTriggerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalTriggerManager.swift; sourceTree = "<group>"; };
+		1A0000052B00000000000001 /* LLMClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLMClient.swift; sourceTree = "<group>"; };
+		1A0000062B00000000000001 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
+		1A0000072B00000000000001 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		1A0000082B00000000000001 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		1A0000092B00000000000001 /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
+		1A00000A2B00000000000001 /* FloatingContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingContentView.swift; sourceTree = "<group>"; };
+		1A00000B2B00000000000001 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		1A00000C2B00000000000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1A00000D2B00000000000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A00000E2B00000000000001 /* Hover.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hover.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A0000232B00000000000001 /* LocalModelDiscovery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalModelDiscovery.swift; sourceTree = "<group>"; };
+		1A0000242B00000000000001 /* ScreenContextService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenContextService.swift; sourceTree = "<group>"; };
+		1A0000252B00000000000001 /* SpeechTranscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechTranscriptionService.swift; sourceTree = "<group>"; };
+		1A0000262B00000000000001 /* HoverAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverAction.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1A00000F2B00000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A0000102B00000000000001 = {
+			isa = PBXGroup;
+			children = (
+				1A0000112B00000000000001 /* Hover */,
+				1A0000122B00000000000001 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1A0000112B00000000000001 /* Hover */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000012B00000000000001 /* HoverApp.swift */,
+				1A0000022B00000000000001 /* AppEnvironment.swift */,
+				1A0000132B00000000000001 /* Controllers */,
+				1A0000272B00000000000001 /* Models */,
+				1A0000142B00000000000001 /* Services */,
+				1A0000152B00000000000001 /* ViewModels */,
+				1A0000162B00000000000001 /* Views */,
+				1A0000172B00000000000001 /* Windows */,
+				1A0000182B00000000000001 /* Resources */,
+				1A00000D2B00000000000001 /* Info.plist */,
+			);
+			path = Hover;
+			sourceTree = "<group>";
+		};
+		1A0000122B00000000000001 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1A00000E2B00000000000001 /* Hover.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1A0000132B00000000000001 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000032B00000000000001 /* StatusBarController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1A0000142B00000000000001 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000042B00000000000001 /* GlobalTriggerManager.swift */,
+				1A0000052B00000000000001 /* LLMClient.swift */,
+				1A0000062B00000000000001 /* KeychainStore.swift */,
+				1A0000232B00000000000001 /* LocalModelDiscovery.swift */,
+				1A0000242B00000000000001 /* ScreenContextService.swift */,
+				1A0000252B00000000000001 /* SpeechTranscriptionService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1A0000272B00000000000001 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000262B00000000000001 /* HoverAction.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1A0000152B00000000000001 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000072B00000000000001 /* SettingsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1A0000162B00000000000001 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000082B00000000000001 /* SettingsView.swift */,
+				1A00000A2B00000000000001 /* FloatingContentView.swift */,
+				1A00000B2B00000000000001 /* VisualEffectView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1A0000172B00000000000001 /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000092B00000000000001 /* FloatingPanel.swift */,
+			);
+			path = Windows;
+			sourceTree = "<group>";
+		};
+		1A0000182B00000000000001 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1A00000C2B00000000000001 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1A0000192B00000000000001 /* Hover */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A00001A2B00000000000001 /* Build configuration list for PBXNativeTarget "Hover" */;
+			buildPhases = (
+				1A00001B2B00000000000001 /* Sources */,
+				1A00000F2B00000000000001 /* Frameworks */,
+				1A00001C2B00000000000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Hover;
+			productName = Hover;
+			productReference = 1A00000E2B00000000000001 /* Hover.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1A00001D2B00000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					1A0000192B00000000000001 = {
+						CreatedOnToolsVersion = 16.0;
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 1A00001E2B00000000000001 /* Build configuration list for PBXProject "Hover" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1A0000102B00000000000001;
+			productRefGroup = 1A0000122B00000000000001 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1A0000192B00000000000001 /* Hover */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1A00001C2B00000000000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A00000C2C00000000000001 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1A00001B2B00000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A0000012C00000000000001 /* HoverApp.swift in Sources */,
+				1A0000022C00000000000001 /* AppEnvironment.swift in Sources */,
+				1A0000032C00000000000001 /* StatusBarController.swift in Sources */,
+				1A0000042C00000000000001 /* GlobalTriggerManager.swift in Sources */,
+				1A0000052C00000000000001 /* LLMClient.swift in Sources */,
+				1A0000062C00000000000001 /* KeychainStore.swift in Sources */,
+				1A0000232C00000000000001 /* LocalModelDiscovery.swift in Sources */,
+				1A0000242C00000000000001 /* ScreenContextService.swift in Sources */,
+				1A0000252C00000000000001 /* SpeechTranscriptionService.swift in Sources */,
+				1A0000262C00000000000001 /* HoverAction.swift in Sources */,
+				1A0000072C00000000000001 /* SettingsViewModel.swift in Sources */,
+				1A0000082C00000000000001 /* SettingsView.swift in Sources */,
+				1A0000092C00000000000001 /* FloatingPanel.swift in Sources */,
+				1A00000A2C00000000000001 /* FloatingContentView.swift in Sources */,
+				1A00000B2C00000000000001 /* VisualEffectView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1A00001F2B00000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1A0000202B00000000000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		1A0000212B00000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+				buildSettings = {
+					ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+					CODE_SIGN_IDENTITY = "-";
+					CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Hover/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.hover.Hover;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		1A0000222B00000000000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+				buildSettings = {
+					ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+					CODE_SIGN_IDENTITY = "-";
+					CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Hover/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.hover.Hover;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1A00001E2B00000000000001 /* Build configuration list for PBXProject "Hover" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A00001F2B00000000000001 /* Debug */,
+				1A0000202B00000000000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A00001A2B00000000000001 /* Build configuration list for PBXNativeTarget "Hover" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A0000212B00000000000001 /* Debug */,
+				1A0000222B00000000000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1A00001D2B00000000000001 /* Project object */;
+}

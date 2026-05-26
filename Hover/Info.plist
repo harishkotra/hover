@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleIconName</key>
+	<string>AppIcon</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
+	<key>LSUIElement</key>
+	<true/>
+	<key>NSAccessibilityUsageDescription</key>
+	<string>Hover needs Accessibility permission to copy the current text selection when you press the global shortcut.</string>
+	<key>NSInputMonitoringUsageDescription</key>
+	<string>Hover uses keyboard event access only to handle its global shortcut and copy the current selection on demand.</string>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>Hover may use system automation to trigger copy actions in the active application.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Hover connects to local OpenAI-compatible model servers you configure.</string>
+	<key>NSScreenCaptureUsageDescription</key>
+	<string>Hover captures screen context only when triggered so the model can understand what you are looking at.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Hover uses the microphone only while push-to-talk voice input is active.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Hover uses speech recognition only to transcribe your push-to-talk prompts.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+	</dict>
+	<key>NSSupportsAutomaticGraphicsSwitching</key>
+	<true/>
+</dict>
+</plist>

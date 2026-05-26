@@ -1,0 +1,50 @@
+# macOS
+.DS_Store
+**/.DS_Store
+Icon?
+
+# Xcode
+DerivedData/
+build/
+Build/
+*.xcarchive
+*.ipa
+*.dSYM.zip
+*.dSYM
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.moved-aside
+*.xcscmblueprint
+
+# Swift
+.build/
+.swiftpm/
+
+# Release artifacts
+*.dmg
+*.zip
+*.pkg
+*.app
+
+# Website and deployment artifacts
+marketing-site/
+Website/
+.vercel/
+node_modules/
+.next/
+out/
+dist/
+
+# Local secrets
+.env
+.env.*
+.env.local
+*.p8
+*.cer
+*.mobileprovision
+
+# Local tooling caches
+.cache/
+.tmp/
+tmp/
