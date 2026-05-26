@@ -316,12 +316,13 @@ struct FloatingContentView: View {
     var body: some View {
         ZStack {
             VisualEffectView(material: .hudWindow, blendingMode: .behindWindow, state: .active)
+            Color(nsColor: .windowBackgroundColor)
+                .opacity(0.12)
 
             VStack(spacing: 0) {
                 header
 
-                Divider()
-                    .opacity(0.5)
+                PanelSeparator()
 
                 content
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -329,15 +330,9 @@ struct FloatingContentView: View {
         }
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         .overlay {
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .strokeBorder(Color(nsColor: .separatorColor).opacity(0.55), lineWidth: 1)
+            FloatingPanelBorder()
         }
-        .overlay(alignment: .top) {
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .stroke(.white.opacity(0.16), lineWidth: 1)
-                .blendMode(.plusLighter)
-                .allowsHitTesting(false)
-        }
+        .shadow(color: .black.opacity(0.34), radius: 24, y: 14)
         .frame(width: 560, height: 380)
         .task {
             viewModel.start()
@@ -353,7 +348,7 @@ struct FloatingContentView: View {
                     .aspectRatio(contentMode: .fit)
                     .clipShape(RoundedRectangle(cornerRadius: 7, style: .continuous))
                     .shadow(color: Color.accentColor.opacity(0.14), radius: 8, y: 2)
-                .frame(width: 30, height: 30)
+                    .frame(width: 30, height: 30)
 
                 VStack(alignment: .leading, spacing: 1) {
                     Text("Hover")
@@ -416,7 +411,10 @@ struct FloatingContentView: View {
         switch viewModel.phase {
         case .composing:
             PromptComposerView(viewModel: viewModel)
-                .padding(18)
+                .padding(.horizontal, 18)
+                .padding(.top, 18)
+                .padding(.bottom, 16)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         case .loading:
             ShimmerLoadingView()
                 .padding(20)
@@ -426,6 +424,69 @@ struct FloatingContentView: View {
         case .streaming, .complete:
             MarkdownContentView(markdown: viewModel.responseText)
             .background(Color(nsColor: .textBackgroundColor).opacity(0.08))
+        }
+    }
+}
+
+private struct FloatingPanelBorder: View {
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .inset(by: 0.5)
+                .strokeBorder(Color.white.opacity(0.20), lineWidth: 1)
+
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .inset(by: 1.5)
+                .strokeBorder(Color.black.opacity(0.26), lineWidth: 1)
+
+            VStack(spacing: 0) {
+                edgeLine(opacity: 0.34)
+
+                Spacer(minLength: 0)
+
+                edgeLine(opacity: 0.24)
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 0.5)
+            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        }
+        .allowsHitTesting(false)
+    }
+
+    private func edgeLine(opacity: Double) -> some View {
+        LinearGradient(
+            colors: [
+                .clear,
+                .white.opacity(opacity * 0.62),
+                .white.opacity(opacity),
+                .white.opacity(opacity * 0.62),
+                .clear
+            ],
+            startPoint: .leading,
+            endPoint: .trailing
+        )
+        .frame(height: 1)
+        .blendMode(.plusLighter)
+    }
+}
+
+private struct PanelSeparator: View {
+    var body: some View {
+        LinearGradient(
+            colors: [
+                .clear,
+                .white.opacity(0.13),
+                .white.opacity(0.08),
+                .clear
+            ],
+            startPoint: .leading,
+            endPoint: .trailing
+        )
+        .frame(height: 1)
+        .overlay(alignment: .bottom) {
+            Color.black.opacity(0.22)
+                .frame(height: 1)
+                .offset(y: 1)
         }
     }
 }
@@ -526,7 +587,7 @@ private struct PromptComposerView: View {
     @FocusState private var isPromptFocused: Bool
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 10) {
             if viewModel.hasSelectedText {
                 Text("Choose an action")
                     .font(.system(size: 15, weight: .semibold))
@@ -548,14 +609,19 @@ private struct PromptComposerView: View {
                 .lineSpacing(4)
                 .scrollContentBackground(.hidden)
                 .padding(10)
-                .frame(minHeight: viewModel.hasSelectedText ? 104 : 150)
+                .frame(height: viewModel.hasSelectedText ? 88 : 150)
                 .background(
                     RoundedRectangle(cornerRadius: 10, style: .continuous)
-                        .fill(Color(nsColor: .textBackgroundColor).opacity(0.58))
+                        .fill(Color(nsColor: .textBackgroundColor).opacity(0.62))
                 )
                 .overlay {
                     RoundedRectangle(cornerRadius: 10, style: .continuous)
-                        .strokeBorder(Color(nsColor: .separatorColor).opacity(0.55), lineWidth: 1)
+                        .strokeBorder(Color.white.opacity(0.13), lineWidth: 1)
+                }
+                .overlay {
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .inset(by: 0.5)
+                        .strokeBorder(Color.black.opacity(0.28), lineWidth: 1)
                 }
                 .focused($isPromptFocused)
 
@@ -590,13 +656,13 @@ private struct PromptComposerView: View {
 private struct ActionPresetGrid: View {
     let onSelect: (HoverActionPreset) -> Void
     private let columns = [
-        GridItem(.flexible(), spacing: 8),
-        GridItem(.flexible(), spacing: 8),
-        GridItem(.flexible(), spacing: 8)
+        GridItem(.flexible(), spacing: 7),
+        GridItem(.flexible(), spacing: 7),
+        GridItem(.flexible(), spacing: 7)
     ]
 
     var body: some View {
-        LazyVGrid(columns: columns, alignment: .leading, spacing: 8) {
+        LazyVGrid(columns: columns, alignment: .leading, spacing: 7) {
             ForEach(HoverActionPreset.allCases) { preset in
                 Button {
                     onSelect(preset)
@@ -604,7 +670,7 @@ private struct ActionPresetGrid: View {
                     Label(preset.title, systemImage: preset.systemImage)
                         .font(.system(size: 12, weight: .semibold))
                         .lineLimit(1)
-                        .frame(maxWidth: .infinity, minHeight: 30, alignment: .leading)
+                        .frame(maxWidth: .infinity, minHeight: 28, alignment: .leading)
                         .padding(.horizontal, 9)
                         .background(
                             RoundedRectangle(cornerRadius: 8, style: .continuous)
