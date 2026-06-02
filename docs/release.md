@@ -38,11 +38,12 @@ The app checks this appcast:
 https://github.com/harishkotra/hover/releases/latest/download/appcast.xml
 ```
 
-When a GitHub release is published, `.github/workflows/release.yml` builds:
+When a GitHub release is published, `.github/workflows/release.yml` builds only the OTA assets:
 
-- `Hover-<version>.dmg` for fresh installs.
 - `Hover-<version>.zip` for Sparkle in-app updates.
 - `appcast.xml` for Hover's update checker.
+
+Do not upload the paid installer DMG to the public GitHub release. The official DMG should be built locally and uploaded to Dodo Payments for paid delivery.
 
 Sparkle update signing is separate from Apple Developer ID signing. Even unsigned supporter-preview builds need Sparkle's EdDSA update signature so Hover can reject tampered update ZIPs.
 
@@ -63,9 +64,10 @@ To publish an update:
 
 1. Update `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` in `Hover.xcodeproj`.
 2. Update `CHANGELOG.md`.
-3. Create and publish a GitHub release from a tag such as `v0.1.1`.
-4. The release workflow uploads the DMG, Sparkle ZIP, and appcast to the release.
-5. Existing Hover installs see the update through the menu bar app's update checker.
+3. Build the paid installer DMG locally with `scripts/build_dmg.sh` and upload it to Dodo Payments if new customers need the latest installer.
+4. Create and publish a GitHub release from a tag such as `v0.1.1`.
+5. The release workflow uploads only the Sparkle ZIP and appcast to the GitHub release.
+6. Existing Hover installs see the update through the menu bar app's update checker.
 
 ## Signed DMG
 
@@ -81,6 +83,8 @@ If `NOTARYTOOL_PROFILE` is omitted, the script creates a signed but non-notarize
 
 The release script embeds the app icon into the mounted `Hover` volume as `.VolumeIcon.icns`. It also applies a best-effort Finder custom icon to the local `Hover.dmg` file. The mounted volume icon is the reliable release behavior; file-level custom icons are macOS metadata and may be stripped by some upload or download paths.
 
-## Supporter Delivery
+## Paid DMG Delivery
 
-GitHub Sponsors supports one-time tiers. For a simple paid-download flow, create a one-time tier and use the welcome message to point supporters to the current DMG delivery location. If you want GitHub-controlled access, add a private download repository to the tier and publish versioned DMGs as release assets in that private repository.
+Use Dodo Payments for the official paid DMG. Upload the latest locally built `Hover-<version>.dmg` there whenever a new installer should be available to new buyers.
+
+GitHub Releases are only for OTA metadata and update archives. Do not attach the paid DMG to public GitHub releases unless you intentionally want it to be freely downloadable.

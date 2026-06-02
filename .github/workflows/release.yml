@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "Existing release tag to build, for example v1.0.1"
+        description: "Existing release tag to build, for example v0.1.1"
         required: true
 
 permissions:
@@ -19,7 +19,7 @@ env:
 
 jobs:
   build-release-assets:
-    name: Build DMG, Sparkle ZIP, and appcast
+    name: Build Sparkle ZIP and appcast
     runs-on: macos-14
 
     steps:
@@ -60,12 +60,20 @@ jobs:
       - name: Resolve Swift packages
         run: xcodebuild -resolvePackageDependencies -project Hover.xcodeproj -scheme Hover
 
-      - name: Build unsigned supporter DMG
+      - name: Build update archive
         shell: bash
         env:
-          ALLOW_UNSIGNED: "1"
           SPARKLE_PUBLIC_ED_KEY: ${{ vars.SPARKLE_PUBLIC_ED_KEY }}
-        run: scripts/build_dmg.sh
+        run: |
+          set -euo pipefail
+          xcodebuild archive \
+            -project Hover.xcodeproj \
+            -scheme Hover \
+            -configuration Release \
+            -archivePath build/release/Hover.xcarchive \
+            -derivedDataPath build/release/DerivedData \
+            CODE_SIGNING_ALLOWED=NO \
+            SPARKLE_PUBLIC_ED_KEY="${SPARKLE_PUBLIC_ED_KEY}"
 
       - name: Package Sparkle update ZIP
         id: package_update
@@ -75,23 +83,18 @@ jobs:
           version="${{ steps.release_tag.outputs.version }}"
           archive_app="build/release/Hover.xcarchive/Products/Applications/${APP_NAME}.app"
           appcast_dir="build/release/appcast"
-          release_dir="build/release/assets"
           zip_name="${APP_NAME}-${version}.zip"
-          dmg_name="${APP_NAME}-${version}.dmg"
 
           if [[ ! -d "${archive_app}" ]]; then
             echo "Missing archived app at ${archive_app}" >&2
             exit 1
           fi
 
-          mkdir -p "${appcast_dir}" "${release_dir}"
+          mkdir -p "${appcast_dir}"
           ditto -c -k --keepParent "${archive_app}" "${appcast_dir}/${zip_name}"
-          cp "build/release/${APP_NAME}.dmg" "${release_dir}/${dmg_name}"
 
           echo "appcast_dir=${appcast_dir}" >> "${GITHUB_OUTPUT}"
-          echo "release_dir=${release_dir}" >> "${GITHUB_OUTPUT}"
           echo "zip_path=${appcast_dir}/${zip_name}" >> "${GITHUB_OUTPUT}"
-          echo "dmg_path=${release_dir}/${dmg_name}" >> "${GITHUB_OUTPUT}"
 
       - name: Download Sparkle tools
         id: sparkle_tools
@@ -134,11 +137,10 @@ jobs:
           tag="${{ steps.release_tag.outputs.tag }}"
           appcast="${{ steps.package_update.outputs.appcast_dir }}/appcast.xml"
           zip_path="${{ steps.package_update.outputs.zip_path }}"
-          dmg_path="${{ steps.package_update.outputs.dmg_path }}"
 
           if [[ ! -f "${appcast}" ]]; then
             echo "Missing generated appcast at ${appcast}" >&2
             exit 1
           fi
 
-          gh release upload "${tag}" "${dmg_path}" "${zip_path}" "${appcast}" --clobber
+          gh release upload "${tag}" "${zip_path}" "${appcast}" --clobber

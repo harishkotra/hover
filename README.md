@@ -73,7 +73,7 @@ swiftc -typecheck -module-cache-path /private/tmp/Hover-ModuleCache -target arm6
 
 ## Paid DMG Strategy
 
-Hover does not need the Mac App Store. The official paid DMG can be distributed directly to supporters through a GitHub Sponsors tier or another purchase channel.
+Hover does not need the Mac App Store. The official paid DMG is distributed through Dodo Payments, while the public GitHub release feed provides only in-app update assets.
 
 Important distinction:
 
@@ -82,7 +82,7 @@ Important distinction:
 
 See [docs/release.md](docs/release.md) and [release/DMG_CHECKLIST.md](release/DMG_CHECKLIST.md).
 
-Published GitHub releases can include a Sparkle appcast and update ZIP so paid users install the DMG once and update from inside Hover.
+Published GitHub releases include only the Sparkle appcast and update ZIP. The paid installer DMG is distributed separately through the payment provider, while installed copies update from inside Hover.
 
 Marketing site: [https://hoverformac.com](https://hoverformac.com)
 
