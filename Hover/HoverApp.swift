@@ -17,6 +17,7 @@ struct HoverApp: App {
         MenuBarExtra {
             HoverMenuView(
                 viewModel: appDelegate.environment.settingsViewModel,
+                updateController: appDelegate.environment.updateController,
                 openOnboarding: {
                     appDelegate.environment.presentOnboardingFromMenu()
                 }
@@ -80,6 +81,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
 private struct HoverMenuView: View {
     @ObservedObject var viewModel: SettingsViewModel
+    @ObservedObject var updateController: UpdateController
     let openOnboarding: () -> Void
 
     var body: some View {
@@ -110,6 +112,25 @@ private struct HoverMenuView: View {
         Divider()
 
         Button {
+            updateController.checkForUpdates()
+        } label: {
+            Label("Check for Updates...", systemImage: "arrow.down.circle")
+        }
+        .disabled(!updateController.isUpdaterAvailable)
+
+        Toggle(isOn: automaticUpdateCheckBinding) {
+            Label("Automatically Check for Updates", systemImage: "arrow.triangle.2.circlepath")
+        }
+        .disabled(!updateController.isUpdaterAvailable)
+
+        Toggle(isOn: automaticUpdateInstallBinding) {
+            Label("Download and Install Updates Automatically", systemImage: "square.and.arrow.down")
+        }
+        .disabled(!updateController.isUpdaterAvailable || !updateController.allowsAutomaticUpdates)
+
+        Divider()
+
+        Button {
             NSApp.terminate(nil)
         } label: {
             Label("Quit Hover", systemImage: "power")
@@ -121,5 +142,19 @@ private struct HoverMenuView: View {
         viewModel.isGlobalListenerEnabled
             ? "Disable Global Listener"
             : "Enable Global Listener"
+    }
+
+    private var automaticUpdateCheckBinding: Binding<Bool> {
+        Binding(
+            get: { updateController.automaticallyChecksForUpdates },
+            set: { updateController.setAutomaticallyChecksForUpdates($0) }
+        )
+    }
+
+    private var automaticUpdateInstallBinding: Binding<Bool> {
+        Binding(
+            get: { updateController.automaticallyDownloadsUpdates },
+            set: { updateController.setAutomaticallyDownloadsUpdates($0) }
+        )
     }
 }

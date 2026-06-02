@@ -28,6 +28,45 @@ Build with:
 ALLOW_UNSIGNED=1 scripts/build_dmg.sh
 ```
 
+## GitHub-Hosted In-App Updates
+
+Hover uses Sparkle 2 for direct macOS updates outside the Mac App Store.
+
+The app checks this appcast:
+
+```text
+https://github.com/harishkotra/hover/releases/latest/download/appcast.xml
+```
+
+When a GitHub release is published, `.github/workflows/release.yml` builds:
+
+- `Hover-<version>.dmg` for fresh installs.
+- `Hover-<version>.zip` for Sparkle in-app updates.
+- `appcast.xml` for Hover's update checker.
+
+Sparkle update signing is separate from Apple Developer ID signing. Even unsigned supporter-preview builds need Sparkle's EdDSA update signature so Hover can reject tampered update ZIPs.
+
+Before publishing the first release, generate Sparkle keys with Sparkle's `generate_keys` tool:
+
+```bash
+generate_keys
+```
+
+Store the generated values in GitHub:
+
+- Repository variable `SPARKLE_PUBLIC_ED_KEY`: the public key printed by `generate_keys`.
+- Repository secret `SPARKLE_PRIVATE_KEY`: the full private key file contents from `generate_keys`.
+
+Never commit the private Sparkle key. It signs update archives and controls which ZIPs Hover will trust.
+
+To publish an update:
+
+1. Update `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` in `Hover.xcodeproj`.
+2. Update `CHANGELOG.md`.
+3. Create and publish a GitHub release from a tag such as `v1.0.1`.
+4. The release workflow uploads the DMG, Sparkle ZIP, and appcast to the release.
+5. Existing Hover installs see the update through the menu bar app's update checker.
+
 ## Signed DMG
 
 ```bash

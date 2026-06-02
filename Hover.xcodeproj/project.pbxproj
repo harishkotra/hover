@@ -23,6 +23,8 @@
 		1A0000242C00000000000001 /* ScreenContextService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000242B00000000000001 /* ScreenContextService.swift */; };
 		1A0000252C00000000000001 /* SpeechTranscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000252B00000000000001 /* SpeechTranscriptionService.swift */; };
 		1A0000262C00000000000001 /* HoverAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000262B00000000000001 /* HoverAction.swift */; };
+		1A0000312C00000000000001 /* UpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000302B00000000000001 /* UpdateController.swift */; };
+		1A0000322C00000000000001 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 1A0000332B00000000000001 /* Sparkle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,7 @@
 		1A0000242B00000000000001 /* ScreenContextService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenContextService.swift; sourceTree = "<group>"; };
 		1A0000252B00000000000001 /* SpeechTranscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechTranscriptionService.swift; sourceTree = "<group>"; };
 		1A0000262B00000000000001 /* HoverAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverAction.swift; sourceTree = "<group>"; };
+		1A0000302B00000000000001 /* UpdateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A0000322C00000000000001 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +111,7 @@
 				1A0000232B00000000000001 /* LocalModelDiscovery.swift */,
 				1A0000242B00000000000001 /* ScreenContextService.swift */,
 				1A0000252B00000000000001 /* SpeechTranscriptionService.swift */,
+				1A0000302B00000000000001 /* UpdateController.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -169,6 +174,9 @@
 			dependencies = (
 			);
 			name = Hover;
+			packageProductDependencies = (
+				1A0000332B00000000000001 /* Sparkle */,
+			);
 			productName = Hover;
 			productReference = 1A00000E2B00000000000001 /* Hover.app */;
 			productType = "com.apple.product-type.application";
@@ -198,6 +206,9 @@
 				Base,
 			);
 			mainGroup = 1A0000102B00000000000001;
+			packageReferences = (
+				1A0000342B00000000000001 /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
 			productRefGroup = 1A0000122B00000000000001 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,6 +244,7 @@
 				1A0000242C00000000000001 /* ScreenContextService.swift in Sources */,
 				1A0000252C00000000000001 /* SpeechTranscriptionService.swift in Sources */,
 				1A0000262C00000000000001 /* HoverAction.swift in Sources */,
+				1A0000312C00000000000001 /* UpdateController.swift in Sources */,
 				1A0000072C00000000000001 /* SettingsViewModel.swift in Sources */,
 				1A0000082C00000000000001 /* SettingsView.swift in Sources */,
 				1A0000092C00000000000001 /* FloatingPanel.swift in Sources */,
@@ -242,6 +254,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1A0000342B00000000000001 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1A0000332B00000000000001 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A0000342B00000000000001 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1A00001F2B00000000000001 /* Debug */ = {

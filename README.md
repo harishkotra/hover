@@ -36,6 +36,7 @@ The paid option is the official DMG distribution: a convenient build, setup guid
 - Optional screen context, screenshot context, and push-to-talk voice input.
 - Copy result, replace selection, and paste to active app.
 - First-run onboarding, connection testing, and privacy-safe diagnostics.
+- GitHub Releases-backed in-app updates through Sparkle.
 
 ## Repository Layout
 
@@ -80,6 +81,8 @@ Important distinction:
 - Unsigned supporter-preview DMG: possible without the Apple Developer Program, but macOS will show Gatekeeper warnings.
 
 See [docs/release.md](docs/release.md) and [release/DMG_CHECKLIST.md](release/DMG_CHECKLIST.md).
+
+Published GitHub releases can include a Sparkle appcast and update ZIP so paid users install the DMG once and update from inside Hover.
 
 Marketing site: [https://hoverformac.com](https://hoverformac.com)
 

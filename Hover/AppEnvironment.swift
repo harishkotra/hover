@@ -13,6 +13,7 @@ import SwiftUI
 @MainActor
 final class AppEnvironment {
     let settingsViewModel: SettingsViewModel
+    let updateController: UpdateController
 
     private let llmClient: LLMClient
     private let screenContextService: ScreenContextService
@@ -25,6 +26,7 @@ final class AppEnvironment {
         let settingsViewModel = SettingsViewModel(keychainStore: keychainStore)
         let llmClient = LLMClient()
         let screenContextService = ScreenContextService()
+        let updateController = UpdateController()
         let floatingPanelController = FloatingPanelController(
             llmClient: llmClient,
             screenContextService: screenContextService,
@@ -33,6 +35,7 @@ final class AppEnvironment {
         let globalTriggerManager = GlobalTriggerManager()
 
         self.settingsViewModel = settingsViewModel
+        self.updateController = updateController
         self.llmClient = llmClient
         self.screenContextService = screenContextService
         self.floatingPanelController = floatingPanelController

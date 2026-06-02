@@ -43,6 +43,9 @@ dist/
 *.p8
 *.cer
 *.mobileprovision
+Sparkle.private.key
+sparkle_private_key
+sparkle_ed_private_key
 
 # Local tooling caches
 .cache/

@@ -1,0 +1,144 @@
+name: Release Hover
+
+on:
+  release:
+    types:
+      - published
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Existing release tag to build, for example v1.0.1"
+        required: true
+
+permissions:
+  contents: write
+
+env:
+  APP_NAME: Hover
+  SPARKLE_VERSION: 2.9.2
+
+jobs:
+  build-release-assets:
+    name: Build DMG, Sparkle ZIP, and appcast
+    runs-on: macos-14
+
+    steps:
+      - name: Resolve release tag
+        id: release_tag
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag="${{ github.event.release.tag_name || inputs.tag }}"
+          if [[ -z "${tag}" ]]; then
+            echo "Release tag is required." >&2
+            exit 1
+          fi
+          echo "tag=${tag}" >> "${GITHUB_OUTPUT}"
+          echo "version=${tag#v}" >> "${GITHUB_OUTPUT}"
+
+      - name: Check out release tag
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.release_tag.outputs.tag }}
+
+      - name: Validate Sparkle release keys
+        shell: bash
+        env:
+          SPARKLE_PUBLIC_ED_KEY: ${{ vars.SPARKLE_PUBLIC_ED_KEY }}
+          SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
+        run: |
+          set -euo pipefail
+          if [[ -z "${SPARKLE_PUBLIC_ED_KEY}" ]]; then
+            echo "Set repository variable SPARKLE_PUBLIC_ED_KEY to the public key printed by Sparkle generate_keys." >&2
+            exit 1
+          fi
+          if [[ -z "${SPARKLE_PRIVATE_KEY}" ]]; then
+            echo "Set repository secret SPARKLE_PRIVATE_KEY to the private key file contents created by Sparkle generate_keys." >&2
+            exit 1
+          fi
+
+      - name: Resolve Swift packages
+        run: xcodebuild -resolvePackageDependencies -project Hover.xcodeproj -scheme Hover
+
+      - name: Build unsigned supporter DMG
+        shell: bash
+        env:
+          ALLOW_UNSIGNED: "1"
+          SPARKLE_PUBLIC_ED_KEY: ${{ vars.SPARKLE_PUBLIC_ED_KEY }}
+        run: scripts/build_dmg.sh
+
+      - name: Package Sparkle update ZIP
+        id: package_update
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="${{ steps.release_tag.outputs.version }}"
+          archive_app="build/release/Hover.xcarchive/Products/Applications/${APP_NAME}.app"
+          appcast_dir="build/release/appcast"
+          release_dir="build/release/assets"
+          zip_name="${APP_NAME}-${version}.zip"
+          dmg_name="${APP_NAME}-${version}.dmg"
+
+          if [[ ! -d "${archive_app}" ]]; then
+            echo "Missing archived app at ${archive_app}" >&2
+            exit 1
+          fi
+
+          mkdir -p "${appcast_dir}" "${release_dir}"
+          ditto -c -k --keepParent "${archive_app}" "${appcast_dir}/${zip_name}"
+          cp "build/release/${APP_NAME}.dmg" "${release_dir}/${dmg_name}"
+
+          echo "appcast_dir=${appcast_dir}" >> "${GITHUB_OUTPUT}"
+          echo "release_dir=${release_dir}" >> "${GITHUB_OUTPUT}"
+          echo "zip_path=${appcast_dir}/${zip_name}" >> "${GITHUB_OUTPUT}"
+          echo "dmg_path=${release_dir}/${dmg_name}" >> "${GITHUB_OUTPUT}"
+
+      - name: Download Sparkle tools
+        id: sparkle_tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          sparkle_archive="${RUNNER_TEMP}/sparkle.tar.xz"
+          sparkle_root="${RUNNER_TEMP}/sparkle"
+          mkdir -p "${sparkle_root}"
+          curl -L "https://github.com/sparkle-project/Sparkle/releases/download/${SPARKLE_VERSION}/Sparkle-${SPARKLE_VERSION}.tar.xz" -o "${sparkle_archive}"
+          tar -xJf "${sparkle_archive}" -C "${sparkle_root}"
+          tools_dir="$(find "${sparkle_root}" -path "*/bin/generate_appcast" -print -quit | xargs dirname)"
+          if [[ -z "${tools_dir}" ]]; then
+            echo "Could not locate Sparkle generate_appcast in downloaded tools." >&2
+            exit 1
+          fi
+          echo "tools_dir=${tools_dir}" >> "${GITHUB_OUTPUT}"
+
+      - name: Generate signed Sparkle appcast
+        shell: bash
+        env:
+          SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
+        run: |
+          set -euo pipefail
+          private_key_file="${RUNNER_TEMP}/sparkle_private_key"
+          printf '%s' "${SPARKLE_PRIVATE_KEY}" > "${private_key_file}"
+          chmod 600 "${private_key_file}"
+
+          "${{ steps.sparkle_tools.outputs.tools_dir }}/generate_appcast" \
+            --ed-key-file "${private_key_file}" \
+            --download-url-prefix "https://github.com/${{ github.repository }}/releases/download/${{ steps.release_tag.outputs.tag }}" \
+            "${{ steps.package_update.outputs.appcast_dir }}"
+
+      - name: Upload release assets
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag="${{ steps.release_tag.outputs.tag }}"
+          appcast="${{ steps.package_update.outputs.appcast_dir }}/appcast.xml"
+          zip_path="${{ steps.package_update.outputs.zip_path }}"
+          dmg_path="${{ steps.package_update.outputs.dmg_path }}"
+
+          if [[ ! -f "${appcast}" ]]; then
+            echo "Missing generated appcast at ${appcast}" >&2
+            exit 1
+          fi
+
+          gh release upload "${tag}" "${dmg_path}" "${zip_path}" "${appcast}" --clobber
