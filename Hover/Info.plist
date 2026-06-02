@@ -52,7 +52,7 @@
 	<key>SUFeedURL</key>
 	<string>https://github.com/harishkotra/hover/releases/latest/download/appcast.xml</string>
 	<key>SUPublicEDKey</key>
-	<string>$(SPARKLE_PUBLIC_ED_KEY)</string>
+	<string>w4cHVy1nKRzSFodN/yahxzeOSJiq1C7NFsQRVSYa8T4=</string>
 	<key>SUScheduledCheckInterval</key>
 	<integer>86400</integer>
 	<key>NSSupportsAutomaticGraphicsSwitching</key>

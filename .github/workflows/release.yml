@@ -41,17 +41,12 @@ jobs:
         with:
           ref: ${{ steps.release_tag.outputs.tag }}
 
-      - name: Validate Sparkle release keys
+      - name: Validate Sparkle release key
         shell: bash
         env:
-          SPARKLE_PUBLIC_ED_KEY: ${{ vars.SPARKLE_PUBLIC_ED_KEY }}
           SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
         run: |
           set -euo pipefail
-          if [[ -z "${SPARKLE_PUBLIC_ED_KEY}" ]]; then
-            echo "Set repository variable SPARKLE_PUBLIC_ED_KEY to the public key printed by Sparkle generate_keys." >&2
-            exit 1
-          fi
           if [[ -z "${SPARKLE_PRIVATE_KEY}" ]]; then
             echo "Set repository secret SPARKLE_PRIVATE_KEY to the private key file contents created by Sparkle generate_keys." >&2
             exit 1
@@ -62,8 +57,6 @@ jobs:
 
       - name: Build update archive
         shell: bash
-        env:
-          SPARKLE_PUBLIC_ED_KEY: ${{ vars.SPARKLE_PUBLIC_ED_KEY }}
         run: |
           set -euo pipefail
           xcodebuild archive \
@@ -72,8 +65,7 @@ jobs:
             -configuration Release \
             -archivePath build/release/Hover.xcarchive \
             -derivedDataPath build/release/DerivedData \
-            CODE_SIGNING_ALLOWED=NO \
-            SPARKLE_PUBLIC_ED_KEY="${SPARKLE_PUBLIC_ED_KEY}"
+            CODE_SIGNING_ALLOWED=NO
 
       - name: Package Sparkle update ZIP
         id: package_update

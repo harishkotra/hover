@@ -53,10 +53,10 @@ Before publishing the first release, generate Sparkle keys with Sparkle's `gener
 generate_keys
 ```
 
-Store the generated values in GitHub:
+Store the generated values this way:
 
-- Repository variable `SPARKLE_PUBLIC_ED_KEY`: the public key printed by `generate_keys`.
-- Repository secret `SPARKLE_PRIVATE_KEY`: the full private key file contents from `generate_keys`.
+- Commit the public key in `Hover/Info.plist` as `SUPublicEDKey`.
+- Store the full private key file contents in the GitHub Actions repository secret `SPARKLE_PRIVATE_KEY`.
 
 Never commit the private Sparkle key. It signs update archives and controls which ZIPs Hover will trust.
 

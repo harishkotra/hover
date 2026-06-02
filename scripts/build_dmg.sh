@@ -26,7 +26,6 @@ DMG_FILE_ICON_RSRC="${BUILD_DIR}/${APP_NAME}-file-icon.rsrc"
 IDENTITY="${DEVELOPER_ID_APPLICATION:-}"
 NOTARY_PROFILE="${NOTARYTOOL_PROFILE:-}"
 ALLOW_UNSIGNED="${ALLOW_UNSIGNED:-0}"
-SPARKLE_PUBLIC_ED_KEY="${SPARKLE_PUBLIC_ED_KEY:-}"
 MOUNTED_VOLUME=""
 
 if [[ -z "${IDENTITY}" && "${ALLOW_UNSIGNED}" != "1" ]]; then
@@ -111,8 +110,7 @@ if [[ -n "${IDENTITY}" ]]; then
     -derivedDataPath "${DERIVED_DATA_PATH}" \
     CODE_SIGN_IDENTITY="${IDENTITY}" \
     CODE_SIGN_STYLE=Manual \
-    ENABLE_HARDENED_RUNTIME=YES \
-    SPARKLE_PUBLIC_ED_KEY="${SPARKLE_PUBLIC_ED_KEY}"
+    ENABLE_HARDENED_RUNTIME=YES
 else
   echo "Building unsigned preview. macOS Gatekeeper will warn users." >&2
   xcodebuild archive \
@@ -121,8 +119,7 @@ else
     -configuration "${CONFIGURATION}" \
     -archivePath "${ARCHIVE_PATH}" \
     -derivedDataPath "${DERIVED_DATA_PATH}" \
-    CODE_SIGNING_ALLOWED=NO \
-    SPARKLE_PUBLIC_ED_KEY="${SPARKLE_PUBLIC_ED_KEY}"
+    CODE_SIGNING_ALLOWED=NO
 fi
 
 APP_PATH="${ARCHIVE_PATH}/Products/Applications/${APP_NAME}.app"
