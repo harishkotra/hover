@@ -2,7 +2,7 @@
 //  SettingsView.swift
 //  Hover
 //
-//  Created by OpenAI Codex on 2026-05-26.
+//  Created by Hover Contributors on 2026-05-26.
 //  Renders the native SwiftUI settings panel for local and OpenAI-compatible endpoints.
 //
 

@@ -2,7 +2,7 @@
 //  FloatingContentView.swift
 //  Hover
 //
-//  Created by OpenAI Codex on 2026-05-26.
+//  Created by Hover Contributors on 2026-05-26.
 //  Renders the premium floating response panel with loading, streaming, copy, and dismiss states.
 //
 

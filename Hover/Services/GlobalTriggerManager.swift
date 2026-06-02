@@ -2,7 +2,7 @@
 //  GlobalTriggerManager.swift
 //  Hover
 //
-//  Created by OpenAI Codex on 2026-05-26.
+//  Created by Hover Contributors on 2026-05-26.
 //  Registers the global shortcut, copies the active text selection, and reports cursor coordinates.
 //
 

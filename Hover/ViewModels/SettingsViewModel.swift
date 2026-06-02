@@ -2,7 +2,7 @@
 //  SettingsViewModel.swift
 //  Hover
 //
-//  Created by OpenAI Codex on 2026-05-26.
+//  Created by Hover Contributors on 2026-05-26.
 //  Manages persisted model configuration, secure API key storage, and listener preferences.
 //
 

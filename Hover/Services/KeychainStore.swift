@@ -2,7 +2,7 @@
 //  KeychainStore.swift
 //  Hover
 //
-//  Created by OpenAI Codex on 2026-05-26.
+//  Created by Hover Contributors on 2026-05-26.
 //  Provides a small typed wrapper around SecItem APIs for storing API secrets.
 //
 

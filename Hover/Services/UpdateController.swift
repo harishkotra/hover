@@ -2,7 +2,7 @@
 //  UpdateController.swift
 //  Hover
 //
-//  Created by OpenAI Codex on 2026-06-02.
+//  Created by Hover Contributors on 2026-06-02.
 //  Wraps Sparkle so Hover can check GitHub-hosted appcasts without leaking
 //  updater implementation details into the app menu or settings views.
 //

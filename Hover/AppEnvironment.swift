@@ -2,7 +2,7 @@
 //  AppEnvironment.swift
 //  Hover
 //
-//  Created by OpenAI Codex on 2026-05-26.
+//  Created by Hover Contributors on 2026-05-26.
 //  Wires together shared services for the menu bar app without leaking dependencies into views.
 //
 

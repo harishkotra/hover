@@ -2,7 +2,7 @@
 //  StatusBarController.swift
 //  Hover
 //
-//  Created by OpenAI Codex on 2026-05-26.
+//  Created by Hover Contributors on 2026-05-26.
 //  Owns the menu bar item, listener toggle, Settings entry point, and Quit action.
 //
 

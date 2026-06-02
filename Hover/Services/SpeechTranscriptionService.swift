@@ -2,7 +2,7 @@
 //  SpeechTranscriptionService.swift
 //  Hover
 //
-//  Created by OpenAI Codex on 2026-05-26.
+//  Created by Hover Contributors on 2026-05-26.
 //  Provides push-to-talk transcription with no idle audio work.
 //
 

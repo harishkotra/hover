@@ -2,7 +2,7 @@
 //  LocalModelDiscovery.swift
 //  Hover
 //
-//  Created by OpenAI Codex on 2026-05-26.
+//  Created by Hover Contributors on 2026-05-26.
 //  Detects local LM Studio and Ollama model servers without sending secrets.
 //
 

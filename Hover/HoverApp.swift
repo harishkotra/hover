@@ -2,7 +2,7 @@
 //  HoverApp.swift
 //  Hover
 //
-//  Created by OpenAI Codex on 2026-05-26.
+//  Created by Hover Contributors on 2026-05-26.
 //  Defines the background application lifecycle and exposes the native Settings scene.
 //
 

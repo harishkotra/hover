@@ -2,7 +2,7 @@
 //  LLMClient.swift
 //  Hover
 //
-//  Created by OpenAI Codex on 2026-05-26.
+//  Created by Hover Contributors on 2026-05-26.
 //  Implements an OpenAI-compatible streaming chat completions client using URLSession.
 //
 

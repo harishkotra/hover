@@ -2,7 +2,7 @@
 //  FloatingPanel.swift
 //  Hover
 //
-//  Created by OpenAI Codex on 2026-05-26.
+//  Created by Hover Contributors on 2026-05-26.
 //  Provides a borderless non-activating panel and coordinator for pointer-positioned responses.
 //
 

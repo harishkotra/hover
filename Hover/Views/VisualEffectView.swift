@@ -2,7 +2,7 @@
 //  VisualEffectView.swift
 //  Hover
 //
-//  Created by OpenAI Codex on 2026-05-26.
+//  Created by Hover Contributors on 2026-05-26.
 //  Bridges NSVisualEffectView into SwiftUI for native vibrant macOS surfaces.
 //
 
