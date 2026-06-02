@@ -63,7 +63,7 @@ To publish an update:
 
 1. Update `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` in `Hover.xcodeproj`.
 2. Update `CHANGELOG.md`.
-3. Create and publish a GitHub release from a tag such as `v1.0.1`.
+3. Create and publish a GitHub release from a tag such as `v0.1.1`.
 4. The release workflow uploads the DMG, Sparkle ZIP, and appcast to the release.
 5. Existing Hover installs see the update through the menu bar app's update checker.
 

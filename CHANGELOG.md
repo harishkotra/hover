@@ -6,7 +6,7 @@ All notable changes to Hover are documented here.
 
 Use this section for changes that have landed after the latest published release.
 
-## 1.0.0 - 2026-06-02
+## 0.1.0 - 2026-06-02
 
 ### Added
 
@@ -34,3 +34,9 @@ Use this section for changes that have landed after the latest published release
 
 - This release can be distributed as an unsigned supporter-preview DMG. macOS Gatekeeper will warn users until Hover is signed and notarized with a Developer ID certificate.
 - Sparkle update archives are signed separately from Apple Developer ID signing so Hover can reject tampered update downloads.
+
+## 0.0.1 - 2026-06-02
+
+### Added
+
+- Added the initial public launch build of Hover for Mac.
