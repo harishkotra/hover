@@ -8,7 +8,7 @@ Security fixes target the latest public release and the current `main` branch.
 
 Please do not open a public issue for vulnerabilities involving API key exposure, prompt leakage, permission bypasses, or unsafe network behavior.
 
-Email: `kotra[at]holikau.org`
+Email: `hey[at]hoverformac.com`
 
 Include:
 
